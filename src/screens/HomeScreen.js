@@ -1,10 +1,15 @@
-import React from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import CounterDisplay from '../components/CounterDisplay';
+import CounterButtons from '../components/CounterButtons';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../store/actions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ increment, decrement }) => {
   return (
     <View style={styles.container}>
-      <Text>Welcome to My First Redux App</Text>
+      <CounterDisplay />
+      <CounterButtons increment={increment} decrement={decrement} />
     </View>
   );
 };
@@ -17,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default connect(null, { increment, decrement })(HomeScreen);
