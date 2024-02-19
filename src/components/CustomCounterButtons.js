@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TouchableOpacity, TextInput, StyleSheet, Text, Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, reset } from '../store/counterSlice';
 
@@ -54,15 +54,15 @@ const CustomCounterButtons = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: Dimensions.get('window').height * 0.02, 
   },
   input: {
-    height: 40,
+    height: Dimensions.get('window').height * 0.05,
     width: '80%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    marginBottom: Dimensions.get('window').height * 0.01, 
+    paddingHorizontal: Dimensions.get('window').width * 0.02, 
   },
   buttonsContainer: {
     flexDirection: 'column',
@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
+    padding: Dimensions.get('window').height * 0.015,
+    borderRadius: Dimensions.get('window').width * 0.02, 
+    marginBottom: Dimensions.get('window').height * 0.01, 
   },
   buttonText: {
     color: 'white',

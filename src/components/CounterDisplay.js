@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
+import { View, Text, StyleSheet, Animated, Easing, Dimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const CounterDisplay = () => {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   counterText: {
-    fontSize: 24,
+    fontSize: Dimensions.get('window').width * 0.05, 
     fontWeight: 'bold',
     color: 'blue',
   },
