@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const CounterDisplay = ({ count }) => {
+const CounterDisplay = () => {
+  const count = useSelector(state => state.counter.count);
+
   return (
     <View>
       <Text>Count: {count}</Text>
@@ -10,8 +12,4 @@ const CounterDisplay = ({ count }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  count: state.count
-});
-
-export default connect(mapStateToProps)(CounterDisplay);
+export default CounterDisplay;

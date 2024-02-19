@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Button } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { increment, decrement } from '../store/reducers'; 
 
-const CounterButtons = ({ increment, decrement }) => {
+const CounterButtons = () => {
+  const dispatch = useDispatch();
+
   return (
     <View>
-      <Button title="Increment" onPress={increment} />
-      <Button title="Decrement" onPress={decrement} />
+      <Button title="Increment" onPress={() => dispatch(increment())} />
+      <Button title="Decrement" onPress={() => dispatch(decrement())} />
     </View>
   );
 };
