@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TextInput, StyleSheet, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, reset } from '../store/counterSlice';
 
@@ -35,9 +35,17 @@ const CustomCounterButtons = () => {
         placeholder="Enter value"
       />
       <View style={styles.buttonsContainer}>
-        <Button title={`Increment by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomIncrement} />
-        {count > 0 && <Button title={`Decrement by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomDecrement} />}
-        <Button title="Reset" onPress={handleReset} />
+        <TouchableOpacity style={[styles.button, { backgroundColor: 'green' }]} onPress={handleCustomIncrement}>
+          <Text style={styles.buttonText}>{`Increment by ${customValue !== '' ? customValue : '1'}`}</Text>
+        </TouchableOpacity>
+        {count > 0 && 
+          <TouchableOpacity style={[styles.button, { backgroundColor: 'red' }]} onPress={handleCustomDecrement}>
+            <Text style={styles.buttonText}>{`Decrement by ${customValue !== '' ? customValue : '1'}`}</Text>
+          </TouchableOpacity>
+        }
+        <TouchableOpacity style={[styles.button, { backgroundColor: 'blue' }]} onPress={handleReset}>
+          <Text style={styles.buttonText}>Reset</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -57,10 +65,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   buttonsContainer: {
-    flexDirection: 'coloumn',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     width: '80%',
   },
+  button: {
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  }
 });
 
 export default CustomCounterButtons;
