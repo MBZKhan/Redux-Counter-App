@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput } from 'react-native';
+import { View, Button, TextInput, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, reset } from '../store/counterSlice';
 
@@ -26,19 +26,41 @@ const CustomCounterButtons = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={styles.input}
         onChangeText={text => setCustomValue(text)}
         value={customValue}
         keyboardType="numeric"
         placeholder="Enter value"
       />
-      <Button title={`Increment by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomIncrement} />
-      {count > 0 && <Button title={`Decrement by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomDecrement} />}
-      <Button title="Reset" onPress={handleReset} />
+      <View style={styles.buttonsContainer}>
+        <Button title={`Increment by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomIncrement} />
+        {count > 0 && <Button title={`Decrement by ${customValue !== '' ? customValue : '1'}`} onPress={handleCustomDecrement} />}
+        <Button title="Reset" onPress={handleReset} />
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    width: '80%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  buttonsContainer: {
+    flexDirection: 'coloumn',
+    justifyContent: 'space-between',
+    width: '80%',
+  },
+});
 
 export default CustomCounterButtons;
